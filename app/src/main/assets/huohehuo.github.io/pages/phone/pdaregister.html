@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+	<head>
+
+		<meta charset="UTF-8">
+
+		<title>Register</title>
+
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="description" content="Personal Website Template">
+		<meta name="keywords" content="Personal, Website Template, Minimal HTML Template, Freelancer">
+		<meta name="author" content="khai tawng">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+		<link rel="stylesheet" href="../../css/bootstrap.min.css">
+		<link rel="stylesheet" href="../../css/animate.css">
+		<link rel="stylesheet" href="../../css/magnific-popup.css">
+		<link rel="stylesheet" href="../../css/font-awesome.min.css">
+		<link type="text/css" href="../../css/maolaoshifu.css" rel="stylesheet" />
+		<!-- Main css -->
+		<link rel="stylesheet" href="../../css/style.css">
+	</head>
+
+	<body data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+
+		<!-- PRE LOADER -->
+		<div class="preloader">
+			<div class="spinner">
+				<span class="spinner-rotate"></span>
+			</div>
+		</div>
+
+		<!-- NAVIGATION SECTION -->
+
+		<!-- CONTACT SECTION -->
+		<section id="contact">
+			<div class="container">
+				<div class="row">
+
+					<div class="col-md-12 col-sm-12">
+						<div class="wow fadeInUp section-title" data-wow-delay="0.2s">
+							<h2>PDA Register</h2>
+							<p>请输入PDA 注册页面中的注册码，点击生成按钮，生成链接后点击</p>
+						</div>
+					</div>
+
+					<div class="col-md-8 col-sm-8">
+						<!-- CONTACT FORM HERE -->
+						<div class="wow fadeInUp" data-wow-delay="0.6s">
+							<form id="contact-form">
+								<div class="col-md-4 col-sm-4">
+									<input id="ipadress" type="text" class="form-control" name="ipadress" placeholder="输入IP地址">
+								</div>
+								<div class="col-md-4 col-sm-4">
+									<input id="port" type="text" class="form-control" name="port" placeholder="输入端口号">
+								</div>
+								<div class="col-md-4 col-sm-4">
+									<input id="uname" type="text" class="form-control" name="name" placeholder="输入注册码">
+								</div>
+								<div class="col-md-offset-9 col-md-3 col-sm-offset-3 col-sm-6">
+									<button id="submit" type="button" class="form-control">生成链接</button>
+								</div>
+								
+							</form>
+							
+							<div >
+									<h1 style="color:darkorange; text-align:center">
+										<a href="#" id="changeurl" style="color:darkorange; text-align:center">在此生成点击链接</a>
+									</h1>
+								</div>
+						</div>
+
+					</div>
+					<script type="text/javascript">
+						var bt = document.getElementById("submit");
+						var theurl = document.getElementById("changeurl");
+						bt.onclick = function() {
+							var uname = document.getElementById("uname").value;
+							var uipadress = document.getElementById("ipadress").value;
+							var uport = document.getElementById("port").value;
+							var addpwd = $.md5(uname + "fzkj601");
+							var cat=addpwd.substring(8,24);
+							var addpwd2 = $.md5(cat);
+							var cat2 =addpwd2.substring(8,24);
+							bt.innerText = "请点击链接~!";
+//							bt.innerText = cat2;
+
+							var url ="http://"+uipadress+":"+uport+"/Assist/RegisterCode"+"?json="+cat2;
+							document.getElementById("changeurl").href = url; 
+							theurl.innerText = "请点击--进行注册"
+//							theurl.setColor(#aaaaaa);
+							
+							
+							
+							//							var msg = document.getElementById("umsg").value;
+							//							Bmob.initialize("4515f12b4196872da04cf8a4492da162", "e1af3a1875cae206ae079655346df931");
+							//							var GameScore = Bmob.Object.extend("feedback");
+							//							var gameScore = new GameScore();
+							//							if(uname.length>0){
+							//								gameScore.set("from","dizhiming_app");
+							//								gameScore.set("content", uname);
+							//								gameScore.set("contact", msg);
+							//								gameScore.save(null, {
+							//								success: function(object) {
+							//									bt.innerText = "发送成功~";
+							//									document.getElementById("uname").value = "";
+							//									document.getElementById("umsg").value = "";
+							//								},
+							//								error: function(model, error) {
+							//									bt.innerText = "发送失败！";
+							//								}
+							//							});
+							//							}else{
+							//								bt.innerText = "联系方式不能为空！";
+							//							}
+
+						}
+					</script>
+
+					<!-- SCRIPTS -->
+					<script src="../../js/jquery.js"></script>
+					<script src="../../js/bootstrap.min.js"></script>
+					<script src="../../js/smoothscroll.js"></script>
+					<script src="../../js/jquery.magnific-popup.min.js"></script>
+					<script src="../../js/magnific-popup-options.js"></script>
+					<script src="../../js/wow.min.js"></script>
+					<script src="../../js/custom.js"></script>
+					<script src="../../js/md5.js"></script>
+
+					<script type="text/javascript" src="../../js/bmob.js"></script>
+	</body>
+
+</html>

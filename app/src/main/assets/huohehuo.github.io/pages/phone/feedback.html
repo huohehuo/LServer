@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="cn">
+
+	<head>
+
+		<meta charset="UTF-8">
+
+		<title>FeedBack</title>
+
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="description" content="Personal Website Template">
+		<meta name="keywords" content="Personal, Website Template, Minimal HTML Template, Freelancer">
+		<meta name="author" content="khai tawng">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+		<link rel="stylesheet" href="../../css/bootstrap.min.css">
+		<link rel="stylesheet" href="../../css/animate.css">
+		<link rel="stylesheet" href="../../css/magnific-popup.css">
+		<link rel="stylesheet" href="../../css/font-awesome.min.css">
+		<link type="text/css" href="../../css/maolaoshifu.css" rel="stylesheet" />
+		<!-- Main css -->
+		<link rel="stylesheet" href="../../css/style.css">
+	</head>
+
+	<body data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+
+		<!-- PRE LOADER -->
+		<div class="preloader">
+			<div class="spinner">
+				<span class="spinner-rotate"></span>
+			</div>
+		</div>
+
+		<!-- NAVIGATION SECTION -->
+		
+		<div class="copyrights">Collect from
+			<a href="http://www.cssmoban.com/">linspace.club</a>
+		</div>
+
+		<!-- CONTACT SECTION -->
+		<section id="contact">
+			<div class="container">
+				<div class="row">
+
+					<div class="col-md-12 col-sm-12">
+						<div class="wow fadeInUp section-title" data-wow-delay="0.2s">
+							<h2>Contact Me?</h2>
+							<p>Please write your name and something about your such as phonenumber or email.Thinks.</p>
+						</div>
+					</div>
+
+					<div class="col-md-12 col-sm-12">
+						<!-- CONTACT FORM HERE -->
+						<div class="wow fadeInUp" data-wow-delay="0.6s">
+							<form id="contact-form">
+								<div class="col-md-4 col-sm-4">
+									<input id="uname" type="text" class="form-control" name="name" placeholder="联系方式">
+								</div>
+								<!--<div class="col-md-4 col-sm-4">
+									<input type="email" class="form-control" name="email" placeholder="Email">
+								</div>
+								<div class="col-md-4 col-sm-4">
+									<input type="text" class="form-control" name="name" placeholder="Subject">
+								</div>-->
+								<div class="col-md-12 col-sm-12">
+									<textarea id="umsg" class="form-control" rows="5" name="message" placeholder="Something you say"></textarea>
+								</div>
+								<div class="col-md-offset-9 col-md-3 col-sm-offset-3 col-sm-6">
+									<button id="submit" type="button" class="form-control">Send Message</button>
+								</div>
+								<div>
+						
+						<a href="http://www.linspace.clue/" target="_blank" title="LINS"></a>Support from
+						<a href="http://www.linspace.clue/" title="主页" target="_blank">linspace.club</a>
+						</div>
+							</form>
+						</div>
+						
+					</div>
+					<script type="text/javascript">
+						var bt = document.getElementById("submit");
+						bt.onclick = function() {
+							var uname = document.getElementById("uname").value;
+							var msg = document.getElementById("umsg").value;
+							Bmob.initialize("4515f12b4196872da04cf8a4492da162", "e1af3a1875cae206ae079655346df931");
+							var GameScore = Bmob.Object.extend("feedback");
+							var gameScore = new GameScore();
+							if(uname.length>0){
+								gameScore.set("from","dizhiming_app");
+								gameScore.set("content", uname);
+								gameScore.set("contact", msg);
+								gameScore.save(null, {
+								success: function(object) {
+									bt.innerText = "发送成功~";
+									document.getElementById("uname").value = "";
+									document.getElementById("umsg").value = "";
+								},
+								error: function(model, error) {
+									bt.innerText = "发送失败！";
+								}
+							});
+							}else{
+								bt.innerText = "联系方式不能为空！";
+							}
+							
+						}
+					</script>
+				
+					<!-- SCRIPTS -->
+					<script src="../../js/jquery.js"></script>
+					<script src="../../js/bootstrap.min.js"></script>
+					<script src="../../js/smoothscroll.js"></script>
+					<script src="../../js/jquery.magnific-popup.min.js"></script>
+					<script src="../../js/magnific-popup-options.js"></script>
+					<script src="../../js/wow.min.js"></script>
+					<script src="../../js/custom.js"></script>
+					<script type="text/javascript" src="../../js/bmob.js"></script>
+	</body>
+
+</html>
